@@ -83,6 +83,10 @@
 
   &__footer {
     flex: 0 0 auto;
+
+    img {
+      transform: translateY(1px);
+    }
   }
 
   img {
