@@ -11,6 +11,8 @@
   --colors-white: #FFFFFF;
   --colors-grey: #BBBBBB;
   --colors-grey200: #E5E7EB;
+  --colors-grey500: #6B7280;
+  --colors-greysec60: rgba(60, 60, 67, 0.6);
 
   --colors-system-blue: #007AFF;
   --colors-system-red: #FF3B30;
@@ -51,6 +53,7 @@ body {
 }
 
 .footer {
+  height: 60px;
   flex-shrink: 0;
 }
 
@@ -59,3 +62,4 @@ body {
 }
 
 @import 'fake-phone';
+@import 'list-items';

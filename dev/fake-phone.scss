@@ -5,7 +5,6 @@
   border-radius: 16px;
   width: 100%;
   max-width: 375px;
-  height: 500px; /* todo: del later */
   margin: 0 auto;
   overflow: hidden;
   display: flex;
@@ -73,15 +72,12 @@
       h1 {
         font-weight: 600;
         font-size: 22px;
-        line-height: 1.27em;
+        line-height: 1em;
         letter-spacing: 0.35px;
         color: #1F2937;
         padding: 0;
         margin: 0;
       }
-    }
-
-    &_list {
     }
   }
 
@@ -90,133 +86,7 @@
   }
 
   img {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-.list-item {
-  border-top: 1px solid #E5E7EB;
-  padding: 8px 0;
-
-  &__line {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-
-    &_top {
-      &--left {
-        img, svg {
-          width: 24px;
-          height: auto;
-          display: inline-block;
-          margin-right: 2px;
-        }
-
-        span {
-          display: inline-block;
-        }
-      }
-
-      &--right {
-        text-align: right;
-      }
-    }
-
-    &_bottom {
-      &--left {
-      }
-
-      &--right {
-        text-align: right;
-      }
-    }
-  }
-
-  &__exchange-name {
-    font-size: 17px;
-    line-height: 1;
-    letter-spacing: -0.408px;
-    transform: translateY(2px);
-  }
-
-  &__exchange-term {
-    color: $color-white;
-    font-weight: bold;
-    font-size: 10px;
-    line-height: 13px;
-    letter-spacing: 0.066px;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 8px;
-    margin-left: 4px;
-
-    &_blue {
-      background-color: $color-system-blue;
-    }
-
-    &_red {
-      background-color: $color-system-red;
-    }
-  }
-
-  &__tpsltsl {
-    border: 1px solid;
-    padding: 2px 4px;
-    border-radius: 8px;
-    margin-left: 4px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 10px;
-    line-height: 13px;
-    letter-spacing: 0.066px;
-
-    &_green {
-      color: $color-system-green;
-      border-color: $color-system-green;
-    }
-
-    &_red {
-      color: $color-system-red;
-      border-color: $color-system-red;
-    }
-
-    &_orange {
-      color: $color-system-orange;
-      border-color: $color-system-orange;
-    }
-  }
-
-  &__value {
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: calc(100% + 6px);
-      height: calc(100% + 6px);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 4px;
-      z-index: -1;
-    }
-
-    &_positive {
-      color: white;
-
-      &::before {
-        background-color: $color-system-green;
-      }
-    }
-
-    &_negative {
-      color: white;
-
-      &::before {
-        background-color: $color-system-red;
-      }
-    }
+    width: 101%;
+    max-width: 101%;
   }
 }

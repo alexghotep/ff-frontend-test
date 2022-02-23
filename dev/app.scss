@@ -4,30 +4,5 @@
 @import 'shards/bootstrap4/bootstrap-reboot';
 @import 'shards/normalize/_normalize';
 
-// Bootstrap4 breakpoints refine (if needed) and bootstrap grid
-//$grid-columns: 16 !default;
-//$grid-gutter-width: 30px !default;
-//$grid-breakpoints: (xs: 0, sm: $width-mobile-L, md: $width-tablet-S, lg: $width-tablet-L, xl: $width-desktop-S, xxl: $width-desktop-L, xxxl: $width-fullhd);
-//$container-max-widths: (sm: 576px, md: 740px, lg: 960px, xl: 1160px, xxl: 1360px, xxxl: 1820px);
-//@import 'shards/bootstrap4/utilities';
-//@import 'shards/bootstrap4/tooltip';
-//@import 'shards/bootstrap4/functions';
-//@import 'shards/bootstrap4/variables';
-//@import 'shards/bootstrap4/bootstrap-grid';
-
-@mixin placeholder {
-  &::-webkit-input-placeholder {
-    @content;
-  }
-  &:-moz-placeholder {
-    @content;
-  }
-  &::-moz-placeholder {
-    @content;
-  }
-  &:-ms-input-placeholder {
-    @content;
-  }
-}
-
+// Project
 @import 'project';
