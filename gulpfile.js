@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     // cssnano = require('cssnano'),
-    eslint = require("gulp-eslint"),
+    // eslint = require("gulp-eslint"),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     include = require('gulp-include'),
@@ -43,9 +43,9 @@ gulp.task('scripts', (done) => {
         .pipe(babel({
             presets: ['@babel/preset-env']
         }))
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError())
+        // .pipe(eslint())
+        // .pipe(eslint.format())
+        // .pipe(eslint.failAfterError())
         .pipe(include())
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())

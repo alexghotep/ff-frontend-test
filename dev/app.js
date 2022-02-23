@@ -1,13 +1,36 @@
-/*
-var WebSocketsURL = "wss://wss.tradernet.ru";
+const WebSocketsURL = "wss://wss.tradernet.ru";
 
-var ws = new WebSocket(WebSocketsURL);
+const ws = new WebSocket(WebSocketsURL);
 
-var tickersToWatchChanges = ["TRNFP", "TATNP", "AAPL.SPB", "TATN", "SU52001RMFS3", "SU29011RMFS2", "SU26216RMFS0", "SU26215RMFS2", "SU26212RMFS9", "SU26207RMFS9", "SU25077RMFS7"];
+// Событие подключения
+ws.onopen = function () {
+    console.log('Connected to WS');
+};
 
-/!**
+
+// Обрабатываем входящее сообщение
+ws.onmessage = function (m) {
+    const [event, data] = JSON.parse(m.data);
+    console.log(event, data)
+};
+
+// Обрабатываем закрытие соединения
+ws.onclose = function (e) {
+    console.log('sockets closed', e);
+};
+
+// Обрабатываем ошибку
+ws.onerror = function (error) {
+    console.log('Sockets.error: ', error);
+    ws.close();
+};
+
+var tickersToWatchChanges = ['RSTI', 'GAZP', 'MRKZ', 'TATN', 'HYDR', 'MRKS', 'SBER', 'FEES', 'TGKA', 'VTBR', 'ANH.US', 'VICL.US', 'BURG.US', 'NBL.US', 'YETI.US', 'WSFS.US', 'NIO.US', 'DXC.US', 'MIC.US', 'HSBC.US', 'EXPN.EU', 'GSK.EU', 'SHP.EU', 'MAN.EU', 'DB1.EU', 'MUV2.EU', 'TATE.EU', 'KGF.EU', 'MGGT.EU', 'SGGD.EU'];
+console.log(tickersToWatchChanges);
+
+/**
  * @param QuoteInfoAnswer[] data
- *!/
+ */
 function updateWatcher(data) {
     data.forEach(console.info.bind(console));
 }
@@ -18,7 +41,6 @@ ws.onmessage = function (m) {
         updateWatcher(data);
     }
 };
-ws.onopen = function() { // Ждём открытия соединения
+ws.onopen = function () { // Ждём открытия соединения
     ws.send("quotes", JSON.stringify(['quotes', tickersToWatchChanges]));
 }
-*/
