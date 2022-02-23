@@ -1,0 +1,13 @@
+{
+    "extends": "eslint:recommended",
+    "rules": {
+        "no-console": 0,
+        "no-empty": 0,
+        "no-undef": 0,
+        "no-irregular-whitespace": 0,
+        "no-shadow-restricted-names": 0,
+        "no-unreachable": 0,
+        "no-unused-vars": 0,
+        "no-useless-escape": 0
+    }
+}

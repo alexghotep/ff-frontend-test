@@ -1,0 +1,34 @@
+// Width breakpoints
+$width-fullhd: 1900px;
+$width-desktop-L: 1400px;
+$width-desktop-S: 1200px;
+$width-tablet-L: 992px;
+$width-tablet-S: 768px;
+$width-mobile-L: 576px;
+$width-mobile-M: 480px;
+$width-mobile-S: 360px;
+
+$base-font-size: 16px;
+
+/* fonts */
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-SFProDisplay-Regular: 'SF Pro Display';
+$font-Roboto: 'Roboto';
+$primaryFont: $font-SFProDisplay-Regular, $font-Roboto, $font-family-sans-serif;
+$secondaryFont: $font-Roboto, $font-family-sans-serif;
+
+/* colors */
+$color-black: var(--colors-black);
+$color-white: var(--colors-white);
+$color-grey: var(--colors-grey);
+$color-grey200: var(--colors-grey200);
+
+$color-system-blue: var(--colors-system-blue);
+$color-system-red: var(--colors-system-red);
+$color-system-green: var(--colors-system-green);
+$color-system-orange: var(--colors-system-orange);
+
+/* z-indexes */
+$z-modal: 200;
+$z-header: 100;
+$z-mobilemenu: 70;

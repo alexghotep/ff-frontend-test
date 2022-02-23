@@ -1,0 +1,6 @@
+const envHost = () => {
+    return '127.0.0.1:1488'; /* backend port here */
+    /** use IP instead of localhost or other domain names, if possible */
+};
+
+exports.envHost = envHost;

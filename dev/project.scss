@@ -1,0 +1,61 @@
+@import '_variables';
+@import 'fonts';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+:root {
+  --colors-black: #1F2937;
+  --colors-white: #FFFFFF;
+  --colors-grey: #BBBBBB;
+  --colors-grey200: #E5E7EB;
+
+  --colors-system-blue: #007AFF;
+  --colors-system-red: #FF3B30;
+  --colors-system-green: #72BF44;
+  --colors-system-orange: #FF9500;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
+body {
+  background-color: var(--colors-white);
+  color: var(--colors-black);
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100%;
+  min-height: -webkit-fill-available; /* следить, чтобы scss-компилятор (f.e. cssnano) не удалял предыдущий min-height */
+  zoom: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $primaryFont;
+  font-weight: 400;
+}
+
+.header {
+  flex-shrink: 0;
+  height: 60px;
+  z-index: $z-header;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@import 'fake-phone';
