@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "gulp-regenerator": "^6.0.0"
+    "gulp-regenerator": "^6.0.0",
+    "ws": "^8.5.0"
   }
 }
