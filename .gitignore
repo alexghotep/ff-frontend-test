@@ -4,11 +4,11 @@
 node_modules
 node_modules/
 node_modules/*
-css
-css/
-css/*
-js
-js/
-js/*
+docs/css
+docs/css/
+docs/css/*
+docs/js
+docs/js/
+docs/js/*
 package-lock.json
 gulp.config.js

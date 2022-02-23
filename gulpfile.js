@@ -18,7 +18,7 @@ var gulp = require('gulp'),
     babel = require('gulp-babel');
 
 var dirDev = 'dev',
-    dirProd = 'web';
+    dirProd = 'docs';
 
 gulp.task('styles', (done) => {
     gulp.src(dirDev + '/app.scss')
