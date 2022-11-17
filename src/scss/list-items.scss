@@ -14,15 +14,20 @@
       margin-bottom: 4px;
 
       &--left {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
         img, svg {
           width: 24px;
           height: auto;
           display: inline-block;
-          margin-right: 2px;
+          margin-right: 6px;
         }
 
         span {
           display: inline-block;
+          margin-right: 4px;
         }
       }
 
