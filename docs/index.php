@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet">
-    <link href="css/app.min.css" media="all" rel="stylesheet"/>
+    <link href="css/app.css" media="all" rel="stylesheet"/>
 </head>
 <body>
 <?php $listItems = [
@@ -237,6 +237,6 @@
     </div>
 </main>
 <footer class="footer"></footer>
-<script src="js/app.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
