@@ -54,13 +54,29 @@ document.addEventListener("DOMContentLoaded", function () {
         results.innerHTML = tpl;
     }
 
+    let currentPrice = ''
+
     function addLog(data) {
         if (data['ltr'] || data['name']) {
             results.querySelector('[data-ticker="' + data['c'] + '"] .dName').innerHTML = data['ltr'] + ' | ' + data['name'];
         }
 
         if (data['ltp']) {
+            let newPrice = data['ltp'];
+            if ((currentPrice < newPrice) || (currentPrice > newPrice)) {
+                if (currentPrice < newPrice) {
+                    console.log('down');
+                    results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'red';
+                } else {
+                    results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'green';
+                    console.log('up')
+                }
+            }
             results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').innerHTML = data['ltp'];
+            currentPrice = newPrice;
+        } else {
+            console.log('static');
+            results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'black';
         }
 
         if (data['chg']) {
@@ -115,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (handlers[message[0]]) {
             handlers[message[0]](message[1]);
         }
-        console.log(`[ws message] Получение данных с сервера...`);
+        // console.log(`[ws message] Получение данных с сервера...`);
     };
 
     ws.onclose = function (event) {
