@@ -123,7 +123,7 @@
 ]; ?>
 <header class="header"></header>
 <main class="main">
-    <div class="fake-phone">
+    <div class="fake-phone" style="display: none;">
         <div class="fake-phone__header">
             <img src="images/phone-nav-bar.svg" alt="phone bar top"/>
         </div>
@@ -235,8 +235,15 @@
             <img src="images/phone-menu-bar.svg" alt="phone menu bar"/>
         </div>
     </div>
+    <div class="container">
+        <div class="textsandstatus">
+            <div id="texts"></div>
+            <div id="status"></div>
+        </div>
+        <div id="results"></div>
+    </div>
 </main>
 <footer class="footer"></footer>
-<script src="js/app.js"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>

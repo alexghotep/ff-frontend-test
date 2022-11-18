@@ -42,6 +42,26 @@ body {
   font-weight: 400;
 }
 
+.container {
+  width: 100%;
+  position: relative;
+  padding: 0 15px;
+  max-width: 100%;
+  margin: 0 auto;
+  @media screen and (min-width: $width-mobile-L) {
+    max-width: 576px;
+  }
+  @media screen and (min-width: $width-tablet-S) {
+    max-width: 760px;
+  }
+  @media screen and (min-width: $width-tablet-L) {
+    max-width: 980px;
+  }
+  @media screen and (min-width: $width-desktop-S) {
+    max-width: 1230px;
+  }
+}
+
 .header {
   flex-shrink: 0;
   height: 60px;
@@ -63,3 +83,4 @@ body {
 
 @import 'fake-phone';
 @import 'list-items';
+@import "testpage";
