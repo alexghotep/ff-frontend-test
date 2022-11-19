@@ -60,7 +60,7 @@
   }
 }
 
-.loadingName, .loadingPrice  {
+.loadingName, .loadingPrice, .loadingTime, .loadingStatus  {
   &.loaded {
     display: none;
   }

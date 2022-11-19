@@ -15,11 +15,6 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet">
     <link href="css/app.css" media="all" rel="stylesheet"/>
 </head>
 <body>
@@ -237,10 +232,10 @@
     </div>
     <div class="container">
         <div class="textsandstatus">
-            <div id="texts"></div>
+            <div id="texts"><span class="loadingTime"><img src="images/loading.svg" alt=""></span></div>
             <div class="exchangestatus">
                 <span>EXCHANGE STATUS: </span>
-                <span id="status"></span>
+                <span id="status"><span class="loadingStatus"><img src="images/loading.svg" alt=""></span></span>
             </div>
         </div>
         <div id="results"><img class="resultsLoading" src="images/loading-pulse.svg" alt=""></div>
