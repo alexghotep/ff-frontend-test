@@ -1,7 +1,9 @@
+'use strict'
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log('app.js (main) loaded');
 
-    let url = 'https://tradernet.ru/api?q=%7B%22cmd%22:%22getMarketStatus%22,%22params%22:%7B%22market%22:%22%D0%9C%D0%9C%D0%92%D0%91_%D0%90%D0%9A%D0%A6_%D0%A4%22%7D%7D';
+    let url = 'https://tradernet.ru/api?q={"cmd":"getMarketStatus","params":{"market":"ММВБ_АКЦ_Ф"}}';
     fetch(url).then(response =>
         response.json().then(data => ({
                 data: data,
@@ -25,6 +27,45 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }));
+
+    let getTickerstpl = {
+        'cmd': 'getTopSecurities',
+        'params': {
+            'type': 'stocks',
+            'exchange': 'russia',
+            'gainers': 0,
+            'limit': 3
+        }
+    };
+
+    let apiurl = 'https://tradernet.ru/api?q={"cmd":"getMarketStatus","params":{"type":"stocks", "exchange":"russia", "gainers":0, "limit":3}}'
+
+    fetch(apiurl)
+        .then((response) => {
+            response.json().then(data => ({
+                data: data,
+            })).then(res => {
+                let tickersData = res.data.result;
+                for (let key in tickersData) {
+                    if (tickersData.hasOwnProperty(key)) {
+                        let tickerNames = [];
+                        let tickerName = tickersData[key].m;
+                        for (let k2 in tickerName) {
+                            if (tickerName.hasOwnProperty(k2)) {
+                                let arrayTickers = tickerName[k2].n2;
+                                tickerNames.push(arrayTickers);
+                            }
+                        }
+                        console.log(tickerNames)
+                        // todo: вытащить отсюда архив
+                    }
+                }
+
+            }).catch((err) => {
+                console.log(err);
+            })
+        });
+
 
     let tickersToWatchChanges = [
         'RSTI', 'GAZP', 'MRKZ', 'RUAL', 'HYDR', 'MRKS', 'SBER', 'FEES', 'TGKA', 'VTBR', 'ANH.US', 'VICL.US', 'BURG.US', 'NBL.US', 'YETI.US', 'WSFS.US', 'NIO.US', 'DXC.US', 'MIC.US', 'HSBC.US', 'EXPN.EU', 'GSK.EU', 'SHP.EU', 'MAN.EU', 'DB1.EU', 'MUV2.EU', 'TATE.EU', 'KGF.EU', 'MGGT.EU', 'SGGD.EU'
@@ -65,17 +106,23 @@ document.addEventListener("DOMContentLoaded", function () {
             let newPrice = data['ltp'];
             if ((currentPrice < newPrice) || (currentPrice > newPrice)) {
                 if (currentPrice < newPrice) {
-                    console.log('down');
-                    results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'red';
+                    // console.log('down');
+                    results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').classList.add('trend-red');
                 } else {
-                    results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'green';
-                    console.log('up')
+                    // console.log('up')
+                    results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').classList.add('trend-green');
                 }
             }
+
+            function removeTrendClass() {
+                results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').classList.remove('trend-red', 'trend-green');
+            }
+
+            setTimeout(removeTrendClass, 1000);
             results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').innerHTML = data['ltp'];
             currentPrice = newPrice;
         } else {
-            console.log('static');
+            // console.log('static');
             results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'black';
         }
 

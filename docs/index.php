@@ -238,7 +238,10 @@
     <div class="container">
         <div class="textsandstatus">
             <div id="texts"></div>
-            <div id="status"></div>
+            <div class="exchangestatus">
+                <span>EXCHANGE STATUS: </span>
+                <span id="status"></span>
+            </div>
         </div>
         <div id="results"></div>
     </div>
