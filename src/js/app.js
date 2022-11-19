@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let APIURL = 'https://tradernet.ru/api?q={"cmd":"getTopSecurities","params":{"type":"stocks", "exchange":"russia", "gainers":"0", "limit":"30"}}'
 
-    function getTickers(){
+    function getTickers() {
         return fetch(APIURL,
             {
                 method: "GET",
@@ -61,15 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let key in evt) {
             if (evt.hasOwnProperty(key)) {
                 let tickersToWatchChanges = evt[key];
-                console.log(tickersToWatchChanges)
+                // console.log(tickersToWatchChanges)
                 const results = document.getElementById('results');
+
                 function testTpl() {
                     let tpl = '';
                     for (let i = 0; i < tickersToWatchChanges.length; i++) {
-                        tpl += '<div class="ticker" data-ticker="' + tickersToWatchChanges[i] + '"><strong>' + tickersToWatchChanges[i] + '</strong>: <br>' +
+                        tpl += '<div class="ticker" data-ticker="' + tickersToWatchChanges[i] + '" style="background-image: url(https://tradernet.ru/logos/get-logo-by-ticker?ticker=' + tickersToWatchChanges[i].toLowerCase() + ')"><strong>' + tickersToWatchChanges[i] + '</strong>: <br>' +
                             '<div>' +
-                            'Name: <span class="dName"></span> <br>' +
-                            'Price: <span class="dPrice"></span> <br>' +
+                            'Name: <span class="loadingName"><img src="images/loading.svg" alt=""></span><span class="dName"></span> <br>' +
+                            'Price: <span class="loadingPrice"><img src="images/loading.svg" alt=""></span><span class="dPrice"></span> <br>' +
                             '<div class="showDPod">' +
                             'Change price of a day: <span class="dPoD"></span>' +
                             '</div>' +
@@ -89,17 +90,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 function addLog(data) {
                     if (data['ltr'] || data['name']) {
+                        results.querySelector('[data-ticker="' + data['c'] + '"] .loadingName').classList.add('loaded');
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dName').innerHTML = data['ltr'] + ' | ' + data['name'];
+
                     }
 
                     if (data['ltp']) {
+                        results.querySelector('[data-ticker="' + data['c'] + '"] .loadingPrice').classList.add('loaded');
                         let newPrice = data['ltp'];
                         if ((currentPrice < newPrice) || (currentPrice > newPrice)) {
                             if (currentPrice < newPrice) {
-                                // console.log('down');
                                 results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').classList.add('trend-red');
                             } else {
-                                // console.log('up')
                                 results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').classList.add('trend-green');
                             }
                         }
@@ -112,15 +114,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').innerHTML = data['ltp'];
                         currentPrice = newPrice;
                     } else {
-                        // console.log('static');
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'black';
                     }
 
                     if (data['chg']) {
                         let dataChg = data['chg'];
-                        // console.log(dataChg)
-                        // console.log(data['ltp'])
-                        // console.log(data['ltr'], data['name'])
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPoD').innerHTML = data['chg'];
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPoD').style.fontWeight = '700';
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPoD').style.color = dataChg > 0 ? 'green' : 'red';

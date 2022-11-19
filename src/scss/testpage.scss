@@ -22,13 +22,26 @@
   display: none;
 }
 
+#results {
+  .resultsLoading {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 64px;
+    height: 64px;
+  }
+}
+
 .ticker {
-  border: 1px solid red;
+  border: 1px solid grey;
+  border-radius: 4px;
   padding: 20px;
   margin-bottom: 10px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
 }
 
 .row-visible {
@@ -44,5 +57,16 @@
 
   &.trend-green {
     color: green;
+  }
+}
+
+.loadingName, .loadingPrice  {
+  &.loaded {
+    display: none;
+  }
+
+  svg, img {
+    width: 12px;
+    height: 12px;
   }
 }

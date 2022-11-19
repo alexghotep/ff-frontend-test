@@ -243,7 +243,7 @@
                 <span id="status"></span>
             </div>
         </div>
-        <div id="results"></div>
+        <div id="results"><img class="resultsLoading" src="images/loading-pulse.svg" alt=""></div>
     </div>
 </main>
 <footer class="footer"></footer>
