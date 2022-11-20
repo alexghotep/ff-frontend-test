@@ -16,6 +16,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <link href="css/app.css" media="all" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css"/>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 <body>
 <?php $listItems = [
@@ -114,15 +116,110 @@
         'listItemPercent2' => '0.79%',
         'listItemPercentTrend' => 'static',
         'listItemTime' => 'night',
+    ], [
+        'listItemIcon' => 'icons-logo-f.svg',
+        'listItemName' => 'FRHC.US',
+        'listItemLongShort' => 'long',
+        'listItemTpSlTsl' => 'tp',
+        'listItemIsRingIcon' => false,
+        'listItemValue' => '51.80',
+        'listItemValueTrend' => 'positive',
+        'listItemExchangeTitle' => 'NASDAQ | FREEDOM HOLDING CORP-NV',
+        'listItemPercent1' => '00.00',
+        'listItemPercent2' => '0.00%',
+        'listItemPercentTrend' => 'static',
+    ],
+    [
+        'listItemName' => 'WKHS.US',
+        'listItemLongShort' => 'short',
+        'listItemTpSlTsl' => 'sl',
+        'listItemIsRingIcon' => false,
+        'listItemValue' => '38.80',
+        'listItemValueTrend' => 'negative',
+        'listItemExchangeTitle' => 'NASDAQ | WORKHORSE GROUP INC',
+        'listItemPercent1' => '-00.00',
+        'listItemPercent2' => '-0.00%',
+        'listItemPercentTrend' => 'negative',
+    ],
+    [
+        'listItemName' => 'FIPO.SPB',
+        'listItemIsRingIcon' => false,
+        'listItemValue' => '42.54',
+        'listItemValueTrend' => 'static',
+        'listItemExchangeTitle' => 'NASDAQ | WORKHORSE GROUP INC',
+        'listItemPercent1' => '00.00',
+        'listItemPercent2' => '0.00%',
+        'listItemPercentTrend' => 'positive',
+    ],
+    [
+        'listItemIcon' => 'icons-logo-tesla.svg',
+        'listItemName' => 'TSLA.US',
+        'listItemIsRingIcon' => true,
+        'listItemValue' => '685.70',
+        'listItemValueTrend' => 'static',
+        'listItemExchangeTitle' => 'NASDAQ | Tesla Motors Inc',
+        'listItemPercent1' => '28.75',
+        'listItemPercent2' => '4.38%',
+        'listItemPercentTrend' => 'positive',
+    ],
+    [
+        'listItemIcon' => 'icons-logo-twitter.svg',
+        'listItemName' => 'TWTR.US',
+        'listItemIsRingIcon' => true,
+        'listItemValue' => '69.86',
+        'listItemValueTrend' => 'negative',
+        'listItemExchangeTitle' => 'NASDAQ | Twitter Inc.',
+        'listItemPercent1' => '0.89',
+        'listItemPercent2' => '1.29%',
+        'listItemPercentTrend' => 'static',
+    ],
+    [
+        'listItemIcon' => 'icons-logo-virgin.svg',
+        'listItemName' => 'SPCE.US',
+        'listItemLongShort' => 'long',
+        'listItemTpSlTsl' => 'tsl',
+        'listItemIsRingIcon' => false,
+        'listItemValue' => '40.69',
+        'listItemValueTrend' => 'static',
+        'listItemExchangeTitle' => 'NASDAQ | Virgin Galactic',
+        'listItemPercent1' => '-8.51',
+        'listItemPercent2' => '-17.30%',
+        'listItemPercentTrend' => 'negative',
+        'listItemTime' => 'sunrise',
+    ],
+    [
+        'listItemIcon' => 'icons-logo-nvidia.svg',
+        'listItemName' => 'NVDA.US',
+        'listItemLongShort' => 'short',
+        'listItemTpSlTsl' => 'tsl',
+        'listItemIsRingIcon' => false,
+        'listItemValue' => '820.50',
+        'listItemValueTrend' => 'static',
+        'listItemExchangeTitle' => 'NASDAQ | Virgin Galactic',
+        'listItemPercent1' => '18.49',
+        'listItemPercent2' => '2.31%    ',
+        'listItemPercentTrend' => 'positive',
+        'listItemTime' => 'sundown',
+    ],
+    [
+        'listItemIcon' => 'icons-logo-f.svg',
+        'listItemName' => 'FRHC.US',
+        'listItemValue' => '64.76',
+        'listItemValueTrend' => 'static',
+        'listItemExchangeTitle' => 'NASDAQ | FREEDOM HOLDING CORP-NV',
+        'listItemPercent1' => '0.51',
+        'listItemPercent2' => '0.79%',
+        'listItemPercentTrend' => 'static',
+        'listItemTime' => 'night',
     ],
 ]; ?>
 <header class="header"></header>
 <main class="main">
-    <div class="fake-phone" style="display: none;">
+    <div class="fake-phone" style="">
         <div class="fake-phone__header">
             <img src="images/phone-nav-bar.svg" alt="phone bar top"/>
         </div>
-        <div class="fake-phone__body">
+        <div class="fake-phone__body" data-simplebar>
             <div class="fake-phone__body_menu">
                 <div class="fake-phone__body_menu--back">
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,8 +255,9 @@
                 <h1>Избранное</h1>
             </div>
             <div class="fake-phone__body_list">
+                <div id="results"></div>
                 <?php foreach ($listItems as $listItem) { ?>
-                    <div class="list-item <?php if(isset($listItem['listItemTime']) && ($listItem['listItemTime'] == 'night')) { ?> list-item__disabled <?php } ?>">
+                    <div class="list-item <?php if (isset($listItem['listItemTime']) && ($listItem['listItemTime'] == 'night')) { ?> list-item__disabled <?php } ?>">
                         <div class="list-item__line list-item__line_top">
                             <div class="list-item__line_top--left">
                                 <?php if (isset($listItem['listItemIcon'])) { ?>
@@ -238,7 +336,7 @@
                 <span id="status"><span class="loadingStatus"><img src="images/loading.svg" alt=""></span></span>
             </div>
         </div>
-        <div id="results"><img class="resultsLoading" src="images/loading-pulse.svg" alt=""></div>
+        <div id="results_old"></div>
     </div>
 </main>
 <footer class="footer"></footer>

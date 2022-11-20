@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    let APIURL = 'https://tradernet.ru/api?q={"cmd":"getTopSecurities","params":{"type":"stocks", "exchange":"russia", "gainers":"0", "limit":"30"}}'
+    let APIURL = 'https://tradernet.ru/api?q={"cmd":"getTopSecurities","params":{"type":"stocks", "exchange":"russia", "gainers":"0", "limit":"8"}}'
 
     function getTickers() {
         return fetch(APIURL,
@@ -69,16 +69,35 @@ document.addEventListener("DOMContentLoaded", function () {
                     for (let i = 0; i < tickersToWatchChanges.length; i++) {
                         tpl += '<div class="ticker" data-ticker="' + tickersToWatchChanges[i] + '" style="background-image: url(https://tradernet.ru/logos/get-logo-by-ticker?ticker=' + tickersToWatchChanges[i].toLowerCase() + ')"><strong>' + tickersToWatchChanges[i] + '</strong>: <br>' +
                             '<div>' +
-                            'Name: <span class="loadingName"><img src="images/loading.svg" alt=""></span><span class="dName"></span> <br>' +
-                            'Price: <span class="loadingPrice"><img src="images/loading.svg" alt=""></span><span class="dPrice"></span> <br>' +
+                            'Name: <span class="loadingName"><img src="images/loading.svg" alt=""></span> <br>' +
+                            'Price: <span class="loadingPrice"><img src="images/loading.svg" alt=""></span> <br>' +
                             '<div class="showDPod">' +
-                            'Change price of a day: <span class="dPoD"></span>' +
+                            'Change price of a day: ' +
                             '</div>' +
                             '<div class="showDPercoD">' +
-                            'Change price percent of a day: <span class="dPercoD"></span>' +
+                            'Change price percent of a day: ' +
                             '</div>' +
                             '</div>' +
-                            '</div>';
+                            '</div>' +
+                            '<div class="list-item" data-ticker="' + tickersToWatchChanges[i] + '">' +
+                            '<div class="list-item__line list-item__line_top">' +
+                            '<div class="list-item__line_top--left">' +
+                            '<img src="https://tradernet.ru/logos/get-logo-by-ticker?ticker=' + tickersToWatchChanges[i].toLowerCase() + '" alt="' + tickersToWatchChanges[i] + '">' +
+                            '<span class="list-item__exchange-name"> ' + tickersToWatchChanges[i] + ' </span>' +
+                            '</div>' +
+                            '<div class="list-item__line_top--right">' +
+                            '<span class="list-item__value  list-item__value_positive dPrice">51.80</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="list-item__line list-item__line_bottom">' +
+                            '<div class="list-item__line_bottom--left  list-item__exchange-title"><span class="dName"></span></div>' +
+                            '<div class="list-item__line_bottom--right">' +
+                            '<span class="list-item__percents dPoD">00.00</span>' +
+                            '<span class="list-item__percents dPercoD">0.00%</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                        ;
                     }
 
                     results.innerHTML = tpl;
@@ -133,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (data['pcp']) {
                         let dataChgPCP = data['pcp'];
-                        results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').innerHTML = data['pcp'];
+                        results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').innerHTML = data['pcp'] + '%';
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').style.fontWeight = '700';
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').style.color = data['pcp'] > 0 ? 'green' : 'red';
                         let showDPercoD = results.querySelector('[data-ticker="' + data['c'] + '"] .showDPercoD');
