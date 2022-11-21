@@ -6,6 +6,7 @@
 - rename `browsersync.config.js.example` to `browsersync.config.js` and set host and port there
   - this file (`browsersync.config.js`) must not be commited to git and must be ignored!
 - create `dist` folder in project root (or `docs` if for GitHub pages)
+ - replace `dist` to `docs` in `webpack.config.js` if for GitHub pages
   
 - run backend on specific port. in `browsersync.config.js` specify host:port in `proxy:` with `dist` as directory root
 
