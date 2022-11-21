@@ -1,6 +1,4 @@
 .idea
 node_modules
-dist
-docs
 /browsersync.config.js
 /yarn-error.log
