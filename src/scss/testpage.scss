@@ -50,18 +50,22 @@
 }
 
 .dPrice {
-  font-weight: 900;
-
   &.trend-red {
-    color: red;
+    color: white;
+    &::before {
+      background-color: $color-system-red;
+    }
   }
 
   &.trend-green {
-    color: green;
+    color: white;
+    &::before {
+      background-color: $color-system-green;
+    }
   }
 }
 
-.loadingName, .loadingPrice, .loadingTime, .loadingStatus  {
+.loadingName, .loadingPrice, .loadingTime, .loadingStatus {
   &.loaded {
     display: none;
   }

@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    let APIURL = 'https://tradernet.ru/api?q={"cmd":"getTopSecurities","params":{"type":"stocks", "exchange":"russia", "gainers":"0", "limit":"8"}}'
+    let APIURL = 'https://tradernet.ru/api?q={"cmd":"getTopSecurities","params":{"type":"stocks", "exchange":"russia", "gainers":"0", "limit":"30"}}'
 
     function getTickers() {
         return fetch(APIURL,
@@ -84,6 +84,16 @@ document.addEventListener("DOMContentLoaded", function () {
                             '<div class="list-item__line_top--left">' +
                             '<img src="https://tradernet.ru/logos/get-logo-by-ticker?ticker=' + tickersToWatchChanges[i].toLowerCase() + '" alt="' + tickersToWatchChanges[i] + '">' +
                             '<span class="list-item__exchange-name"> ' + tickersToWatchChanges[i] + ' </span>' +
+                            '<span class="list-item__exchange-term list-item__exchange-term_blue">long</span>' +
+                            '<span class="list-item__exchange-term list-item__exchange-term_red">short</span>' +
+                            '<span class="list-item__ring-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"\n' +
+                            '                                             xmlns="http://www.w3.org/2000/svg"><rect x="0.138672" y="0.0671387"\n' +
+                            '                                                                                      width="16" height="16" rx="8"\n' +
+                            '                                                                                      fill="#007AFF"/>\n' +
+                            '<g clip-path="url(#clip0_40_322)"><path\n' +
+                            '    d="M8.13883 3.90047C7.79383 3.90047 7.51383 4.18047 7.51383 4.52547V4.81519C6.43592 5.0931 5.63883 6.06922 5.63883 7.23381V9.73381L4.8055 10.5671V10.9838H11.4722V10.5671L10.6388 9.73381V7.23381C10.6388 6.06922 9.84175 5.09392 8.76383 4.816V4.52547C8.76383 4.18047 8.48383 3.90047 8.13883 3.90047H8.13883ZM7.3055 11.4005C7.3055 11.8609 7.67883 12.2338 8.13883 12.2338C8.59883 12.2338 8.97217 11.8605 8.97217 11.4005H7.3055Z"\n' +
+                            '    fill="white"/></g><defs><clipPath id="clip0_40_322"><rect width="10" height="10" fill="white"\n' +
+                            '                                                              transform="translate(3.13867 3.06714)"/></clipPath></defs></svg></span>' +
                             '</div>' +
                             '<div class="list-item__line_top--right">' +
                             '<span class="list-item__value  list-item__value_positive dPrice">51.80</span>' +
@@ -133,13 +143,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').innerHTML = data['ltp'];
                         currentPrice = newPrice;
                     } else {
-                        results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'black';
+                        // results.querySelector('[data-ticker="' + data['c'] + '"] .dPrice').style.color = 'white';
                     }
 
                     if (data['chg']) {
                         let dataChg = data['chg'];
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPoD').innerHTML = data['chg'];
-                        results.querySelector('[data-ticker="' + data['c'] + '"] .dPoD').style.fontWeight = '700';
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPoD').style.color = dataChg > 0 ? 'green' : 'red';
                         let showDPoD = results.querySelector('[data-ticker="' + data['c'] + '"] .showDPod');
                         if ((dataChg > 0) || (dataChg < 0)) {
@@ -153,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (data['pcp']) {
                         let dataChgPCP = data['pcp'];
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').innerHTML = data['pcp'] + '%';
-                        results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').style.fontWeight = '700';
                         results.querySelector('[data-ticker="' + data['c'] + '"] .dPercoD').style.color = data['pcp'] > 0 ? 'green' : 'red';
                         let showDPercoD = results.querySelector('[data-ticker="' + data['c'] + '"] .showDPercoD');
                         if ((dataChgPCP > 0) || (dataChgPCP < 0)) {
