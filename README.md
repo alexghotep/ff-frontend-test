@@ -22,7 +22,7 @@ clear port if needed (it's necessary if it has been taken by another (or same) p
 
 do it if process (f.e. browsersync's hot update) looks not working:
 
-```
+``` 
 [windows console, cmd]
 netstat -ao | find /i "listening"
 taskkill /F /PID ****
