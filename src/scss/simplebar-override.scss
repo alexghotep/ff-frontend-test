@@ -1,0 +1,9 @@
+@import '_variables';
+
+.simplebar-scrollbar:before {
+  background-color: $color-system-blue;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 1;
+}

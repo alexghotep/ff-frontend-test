@@ -1,4 +1,5 @@
 'use strict'
+import SimpleBar from "simplebar";
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log('app.js (main) loaded');

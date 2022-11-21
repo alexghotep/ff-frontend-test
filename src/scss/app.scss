@@ -5,5 +5,7 @@
 //@import 'shards/normalize/_normalize';
 
 // Project
+@import "~simplebar";
+@import "simplebar-override";
 @import "reset";
 @import 'project';
