@@ -173,8 +173,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
 
-                const WS_SOCKETURL = 'wss://wss.tradernet.ru/?SID=lri3o90curhoqk6p104jm46vie',
-                // const WS_SOCKETURL = 'wss://wss.tradernet.ru',
+                // const WS_SOCKETURL = 'wss://wss.tradernet.ru/?SID=lri3o90curhoqk6p104jm46vie',
+                const WS_SOCKETURL = 'wss://wss.tradernet.ru',
                     ws = new WebSocket(WS_SOCKETURL);
 
                 // шаблон ответа сокета
